@@ -13,3 +13,9 @@ nombre = "Hober Mallow"
 cargo  = "Ingeniero Puto Amo"
 github = "HoberMallow45"
 roles  = ["integrante", "revisor", "aprobador", "mantenedor"]
+
+[[persona]]
+nombre = "Hober Mallow"
+cargo  = "Ingeniero Puto Amo"
+github = "HoberMallow42"
+roles  = ["integrante", "revisor", "aprobador", "mantenedor"]
