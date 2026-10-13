@@ -7,3 +7,9 @@
 nombre = "Augusto Aizpún"
 github = "KkDkDt22"
 roles  = ["team-leader", "aprobador", "integrante"]
+
+[[persona]]
+nombre = "Hober Mallow"
+cargo  = "Ingeniero Puto Amo"
+github = "HoberMallow45"
+roles  = ["integrante", "revisor", "aprobador", "mantenedor"]
