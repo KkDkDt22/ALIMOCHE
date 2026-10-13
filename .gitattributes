@@ -1,0 +1,20 @@
+# Texto con fin de línea LF en el repositorio (Windows y Linux ven lo mismo)
+*.typ   text eol=lf
+*.toml  text eol=lf
+*.md    text eol=lf
+*.py    text eol=lf
+*.yml   text eol=lf
+CODEOWNERS text eol=lf
+
+# Binarios grandes por Git LFS (permite «Bloquear CAD» con git lfs lock)
+*.step     filter=lfs diff=lfs merge=lfs -text lockable
+*.stp      filter=lfs diff=lfs merge=lfs -text lockable
+*.CATPart  filter=lfs diff=lfs merge=lfs -text lockable
+*.CATProduct filter=lfs diff=lfs merge=lfs -text lockable
+*.SLDPRT   filter=lfs diff=lfs merge=lfs -text lockable
+*.SLDASM   filter=lfs diff=lfs merge=lfs -text lockable
+*.f3d      filter=lfs diff=lfs merge=lfs -text lockable
+*.fem      filter=lfs diff=lfs merge=lfs -text lockable
+
+# Emisiones: PDF binario, nunca se fusiona
+publicados/**/*.pdf binary

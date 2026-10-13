@@ -1,0 +1,57 @@
+# Comprobación obligatoria de cada propuesta (PR) y de main.
+# El nombre del job («validar») es el que se exige en la regla de protección de main.
+name: Validar
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:   # lo lanza el flujo de emisión sobre su propia rama
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validar-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+
+      - name: Instalar Typst (versión fijada en herramientas/typst-version.txt)
+        run: |
+          V=$(tr -d '[:space:]' < herramientas/typst-version.txt)
+          curl -fsSL "https://github.com/typst/typst/releases/download/v${V}/typst-x86_64-unknown-linux-musl.tar.xz" \
+            | tar -xJ -C /tmp
+          sudo install -m755 /tmp/typst-x86_64-unknown-linux-musl/typst /usr/local/bin/typst
+          sudo apt-get install -y -qq fonts-liberation > /dev/null
+          typst --version
+
+      - name: Metadatos, jerarquía y compilación de todos los documentos
+        run: python3 herramientas/alimoche_ci.py validar --pdf compilados
+
+      - name: CODEOWNERS al día con equipo.toml y los aprobadores
+        run: python3 herramientas/alimoche_ci.py codeowners --comprobar
+
+      - name: publicados/ es inmutable
+        if: github.event_name == 'pull_request'
+        run: python3 herramientas/alimoche_ci.py publicados --base "origin/${{ github.base_ref }}"
+
+      - name: Nombre de la rama de trabajo
+        if: github.event_name == 'pull_request'
+        run: python3 herramientas/alimoche_ci.py rama "${{ github.head_ref }}"
+
+      - name: PDF de propuesta
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-propuesta-${{ github.event.pull_request.number || github.sha }}
+          path: compilados/*.pdf
+          if-no-files-found: ignore
+          retention-days: 30

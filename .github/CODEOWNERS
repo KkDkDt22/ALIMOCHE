@@ -1,0 +1,16 @@
+# GENERADO por herramientas/alimoche_ci.py codeowners --escribir. No editar a mano.
+
+# Origen: equipo.toml + campo «aprobador» del meta de cada documento.
+# Cada documento lo aprueba su aprobador; los líderes figuran siempre como
+# alternativa (el autor de una propuesta no puede aprobarla).
+
+*                      @KkDkDt22
+
+/documentos/ALM-01/     @KkDkDt22
+/documentos/ALM-02/     @KkDkDt22
+
+/publicados/            @KkDkDt22
+/plantillas/            @KkDkDt22
+/equipo.toml            @KkDkDt22
+/herramientas/          @KkDkDt22
+/.github/               @KkDkDt22
