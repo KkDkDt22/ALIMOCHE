@@ -10,7 +10,7 @@
   titulo: "asdfgh",
   tipo: "Informe técnico",
   revision: "0.1",
-  estado: "Borrador",          // Borrador | En revisión | Aprobado | Obsoleto
+  estado: "En revisión",          // Borrador | En revisión | Aprobado | Obsoleto
   creado: "13/10/2026",
   revisado: "13/10/2026",
   autor: "Augusto Aizpún",    // Igual que en equipo.toml.
