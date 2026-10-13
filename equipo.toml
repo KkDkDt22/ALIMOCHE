@@ -19,3 +19,9 @@ nombre = "Hober Mallow"
 cargo  = "Ingeniero Puto Amo"
 github = "HoberMallow42"
 roles  = ["integrante", "revisor", "aprobador", "mantenedor"]
+
+[[persona]]
+nombre = "Pablo Martín"
+cargo  = "Ingeniero Jefe"
+github = "Ohmyus"
+roles  = ["revisor", "aprobador", "team-leader", "mantenedor"]
